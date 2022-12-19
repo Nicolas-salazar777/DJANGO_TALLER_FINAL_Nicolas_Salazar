@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>seminario de gastronómica</title>
+</head>
+<body>
+    <div class="alert alert-primary" role="alert"><h1 class="text-center">Lista de inscripciones seminario de gastronómica</h1></div>
+    {% if Inscritos %}
+    <table class="table table-bordered border-primary">
+        <thead>
+            <tr>
+                <th class="table-primary">ID</th>
+                <th class="table-secondary">Nombre</th>
+                <th class="table-success">Telefono</th>
+                <th class="table-danger">fecha Inscripción</th>
+                <th class="table-warning">Institucion</th>
+                <th class="table-info">Hora Inscripción</th>
+                <th class="table-light">Estado</th>
+                <th class="table-primary">Observacion</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            {% for ins in Inscritos %}
+
+            <tr>
+                <td class="table-primary">{{ins.id}}</td>
+                <td class="table-secondary">{{ins.nombre}}</td>
+                <td class="table-success">{{ins.telefono}}</td>
+                <td class="table-danger">{{ins.fechainscripción}}</td>
+                <td class="table-warning">{{ins.institucion}}</td>
+                <td class="table-info">{{ins.horainscripción}}</td>
+                <td class="table-light">{{ins.estado}}</td>
+                <td class="table-primary">{{ins.observacion}}</td>
+
+                <td class="table-success"><a href="/actualizar/{{ins.id}}" class="btn btn-success btn-sm" value="Actualizar"><i class="bi bi-pencil"></i>Actualizar</a></td>
+                <td class="table-danger"><a href="/eliminar/{{ins.id}}" class="btn btn-danger btn-sm" value="Eliminar"><i class="bi bi-trash"></i>Eliminar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <div class="alert alert-info">No hay participantes Inscriptos</div>
+    {% endif %}
+
+    <a href="../" type="button" class="btn btn-danger">Volver</a>
+    <a href="../agregarinscripcion" type="button" class="btn btn-success">Agregar Inscripcion</a>
+</body>
+</html>
